@@ -61,5 +61,26 @@ namespace console_app_estudents
             textBox2.Clear();
             textBox3.Clear();
         }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            var item = listView1.GetItemAt(e.X, e.Y);
+            if (item != null)
+            {
+                // Determina cuál celda fue clickeada
+                int subItemIndex = item.SubItems.IndexOf(item.GetSubItemAt(e.X, e.Y));
+
+                // Obtiene el contenido de la celda seleccionada
+                string cellContent = item.SubItems[subItemIndex].Text;
+
+                // Muestra el contenido de la celda
+                MessageBox.Show($"Has seleccionado la celda: {cellContent}");
+            }
+        }
     }
 }
